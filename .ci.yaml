@@ -5818,6 +5818,7 @@ targets:
       task_name: flutter_tool_startup
 
   - name: Linux flutter_packaging
+<<<<<<< HEAD
     recipe: packaging/packaging
     timeout: 60
     scheduler: release
@@ -5825,10 +5826,21 @@ targets:
     enabled_branches:
       - beta
       - stable
+=======
+    recipe: packaging_v2/packaging_v2
+    timeout: 60
+    scheduler: release
+    bringup: true
+    enabled_branches:
+      - beta
+      - stable
+      - main
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
     properties:
       task_name: flutter_packaging
       tags: >
         ["framework", "hostonly", "shard", "linux"]
+<<<<<<< HEAD
     drone_dimensions:
       - os=Linux
 
@@ -5839,10 +5851,23 @@ targets:
     enabled_branches:
       - beta
       - stable
+=======
+
+  - name: Mac flutter_packaging
+    recipe: packaging_v2/packaging_v2
+    timeout: 60
+    scheduler: release
+    bringup: true
+    enabled_branches:
+      - beta
+      - stable
+      - main
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
     properties:
       task_name: flutter_packaging
       tags: >
         ["framework", "hostonly", "shard", "mac"]
+<<<<<<< HEAD
     drone_dimensions:
       - os=Mac
       - cpu=x86
@@ -5855,10 +5880,25 @@ targets:
     enabled_branches:
       - beta
       - stable
+=======
+    dimensions:
+      cpu: "x86"
+
+  - name: Mac_arm64 flutter_packaging
+    recipe: packaging_v2/packaging_v2
+    timeout: 60
+    scheduler: release
+    bringup: true
+    enabled_branches:
+      - beta
+      - stable
+      - main
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
     properties:
       task_name: flutter_packaging
       tags: >
         ["framework", "hostonly", "shard", "mac"]
+<<<<<<< HEAD
     drone_dimensions:
       - os=Mac
       - cpu=arm64
@@ -5866,10 +5906,33 @@ targets:
   - name: Windows flutter_packaging
     recipe: packaging/packaging
     timeout: 60
+=======
+    dimensions:
+      cpu: "arm64"
+
+  - name: Windows flutter_packaging
+    recipe: packaging_v2/packaging_v2
+    timeout: 60
     scheduler: release
     bringup: true
     enabled_branches:
       - beta
+      - stable
+      - main
+    properties:
+      task_name: flutter_packaging
+      tags: >
+        ["framework", "hostonly", "shard", "windows"]
+
+
+  - name: Linux docs_deploy_beta
+    recipe: flutter/flutter
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
+    scheduler: release
+    bringup: true
+    enabled_branches:
+      - beta
+<<<<<<< HEAD
       - stable
     properties:
       task_name: flutter_packaging
@@ -5885,6 +5948,9 @@ targets:
     bringup: true
     enabled_branches:
       - beta
+=======
+      - main
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
     presubmit: false
     timeout: 60
     properties:
@@ -5899,11 +5965,17 @@ targets:
       validation: docs_deploy
       validation_name: Docs_deploy
       firebase_project: master-docs-flutter-dev
+<<<<<<< HEAD
     drone_dimensions:
       - os=Linux
 
   - name: Linux docs_deploy_stable
     recipe: flutter/docs
+=======
+
+  - name: Linux docs_deploy_stable
+    recipe: flutter/flutter
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
     scheduler: release
     bringup: true
     enabled_branches:
@@ -5922,5 +5994,8 @@ targets:
       validation: docs_deploy
       validation_name: Docs_deploy
       firebase_project: docs-flutter-dev
+<<<<<<< HEAD
     drone_dimensions:
       - os=Linux
+=======
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf

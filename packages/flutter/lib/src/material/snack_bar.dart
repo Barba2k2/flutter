@@ -720,6 +720,7 @@ class _SnackBarState extends State<SnackBar> {
                 if (willOverflowAction) SizedBox(width: snackBarWidth * 0.4),
               ],
             ),
+<<<<<<< HEAD
             if (willOverflowAction)
               Padding(
                 padding: const EdgeInsets.only(bottom: _singleLineVerticalPadding),
@@ -727,6 +728,16 @@ class _SnackBarState extends State<SnackBar> {
               ),
             ],
         ),
+=======
+            if(actionLineOverflow) Padding(
+              padding: const EdgeInsets.only(bottom: _singleLineVerticalPadding),
+              child: Row(mainAxisAlignment: MainAxisAlignment.end,
+              children: maybeActionAndIcon),
+            ),
+          ],
+
+      ),
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
     );
 
     if (!isFloatingSnackBar) {

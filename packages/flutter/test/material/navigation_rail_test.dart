@@ -2887,6 +2887,72 @@ void main() {
     );
   });
 
+<<<<<<< HEAD
+=======
+  testWidgets('NavigationRail indicator renders ripple - extended', (WidgetTester tester) async {
+    // This is a regression test for https://github.com/flutter/flutter/issues/117126
+    await _pumpNavigationRail(
+      tester,
+      navigationRail: NavigationRail(
+        selectedIndex: 1,
+        extended: true,
+        destinations: const <NavigationRailDestination>[
+          NavigationRailDestination(
+            icon: Icon(Icons.favorite_border),
+            selectedIcon: Icon(Icons.favorite),
+            label: Text('Abc'),
+          ),
+          NavigationRailDestination(
+            icon: Icon(Icons.bookmark_border),
+            selectedIcon: Icon(Icons.bookmark),
+            label: Text('Def'),
+          ),
+        ],
+        labelType: NavigationRailLabelType.none,
+      ),
+    );
+
+    final TestGesture gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    await gesture.addPointer();
+    await gesture.moveTo(tester.getCenter(find.byIcon(Icons.favorite_border)));
+    await tester.pumpAndSettle();
+
+    final RenderObject inkFeatures = tester.allRenderObjects.firstWhere((RenderObject object) => object.runtimeType.toString() == '_RenderInkFeatures');
+    const Rect indicatorRect = Rect.fromLTRB(12.0, 6.0, 68.0, 38.0);
+    const Rect includedRect = indicatorRect;
+    final Rect excludedRect = includedRect.inflate(10);
+
+    expect(
+      inkFeatures,
+      paints
+        ..clipPath(
+          pathMatcher: isPathThat(
+            includes: <Offset>[
+              includedRect.centerLeft,
+              includedRect.topCenter,
+              includedRect.centerRight,
+              includedRect.bottomCenter,
+            ],
+            excludes: <Offset>[
+              excludedRect.centerLeft,
+              excludedRect.topCenter,
+              excludedRect.centerRight,
+              excludedRect.bottomCenter,
+            ],
+          ),
+        )
+        ..rect(
+          rect: indicatorRect,
+          color: const Color(0x0a6750a4),
+        )
+        ..rrect(
+          rrect: RRect.fromLTRBR(12.0, 58.0, 68.0, 90.0, const Radius.circular(16)),
+          color: const Color(0xffe8def8),
+        ),
+    );
+  });
+
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
   testWidgets('NavigationRail indicator renders properly when padding is applied', (WidgetTester tester) async {
     // This is a regression test for https://github.com/flutter/flutter/issues/117126
     await _pumpNavigationRail(
@@ -3082,6 +3148,7 @@ void main() {
     );
   });
 
+<<<<<<< HEAD
   testWidgets('NavigationRail indicator renders properly with long labels', (WidgetTester tester) async {
     // This is a regression test for https://github.com/flutter/flutter/issues/128005.
     await _pumpNavigationRail(
@@ -3374,6 +3441,8 @@ void main() {
     );
   }, skip: kIsWeb && !isCanvasKit); // https://github.com/flutter/flutter/issues/99933
 
+=======
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
   testWidgets('NavigationRail indicator scale transform', (WidgetTester tester) async {
     int selectedIndex = 0;
     Future<void> buildWidget() async {

@@ -453,6 +453,7 @@ void main() {
     }));
   });
 
+<<<<<<< HEAD
   testWidgets('The InkWell widget on OverlayPortal does not throw', (WidgetTester tester) async {
     final OverlayPortalController controller = OverlayPortalController();
     controller.show();
@@ -517,13 +518,21 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+=======
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
   testWidgets('Custom rectCallback renders an ink splash from its center', (WidgetTester tester) async {
     const Color splashColor = Color(0xff00ff00);
 
     Widget buildWidget({InteractiveInkFeatureFactory? splashFactory}) {
+<<<<<<< HEAD
       return MaterialApp(
         theme: ThemeData(useMaterial3: false),
         home: Material(
+=======
+      return Directionality(
+        textDirection: TextDirection.ltr,
+        child: Material(
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
           child: Center(
             child: SizedBox(
               width: 100.0,
@@ -571,6 +580,7 @@ void main() {
         ..circle(x: 50.0, y: 50.0, color: splashColor)
     );
   });
+<<<<<<< HEAD
 
   testWidgets('Ink with isVisible=false does not paint', (WidgetTester tester) async {
     const Color testColor = Color(0xffff1234);
@@ -593,6 +603,8 @@ void main() {
     box = tester.renderObject(find.byType(Material));
     expect(box, isNot(paints..rect(color: testColor)));
   });
+=======
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
 }
 
 class _InkRippleFactory extends InteractiveInkFeatureFactory {

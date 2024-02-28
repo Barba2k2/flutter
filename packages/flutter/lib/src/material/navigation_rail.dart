@@ -580,12 +580,18 @@ class _RailDestination extends StatelessWidget {
       '[NavigationRail.indicatorColor] does not have an effect when [NavigationRail.useIndicator] is false',
     );
 
+<<<<<<< HEAD
     final ThemeData theme = Theme.of(context);
     final TextDirection textDirection = Directionality.of(context);
     final bool material3 = theme.useMaterial3;
     final EdgeInsets destinationPadding = (padding ?? EdgeInsets.zero).resolve(textDirection);
     Offset indicatorOffset;
     bool applyXOffset = false;
+=======
+    final bool material3 = Theme.of(context).useMaterial3;
+    final EdgeInsets destionationPadding = (padding ?? EdgeInsets.zero).resolve(Directionality.of(context));
+    Offset indicatorOffset;
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
 
     final Widget themedIcon = IconTheme(
       data: disabled
@@ -613,8 +619,13 @@ class _RailDestination extends StatelessWidget {
         // Split the destination spacing across the top and bottom to keep the icon centered.
         final Widget? spacing = material3 ? const SizedBox(height: _verticalDestinationSpacingM3 / 2) : null;
         indicatorOffset = Offset(
+<<<<<<< HEAD
           minWidth / 2 + destinationPadding.left,
           _verticalDestinationSpacingM3 / 2 + destinationPadding.top + indicatorVerticalOffset,
+=======
+          minWidth / 2 + destionationPadding.left,
+          _verticalDestinationSpacingM3 / 2 + destionationPadding.top,
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
         );
         final Widget iconPart = Column(
           children: <Widget>[
@@ -691,6 +702,7 @@ class _RailDestination extends StatelessWidget {
         final Widget topSpacing = SizedBox(height: material3 ? 0 : verticalPadding);
         final Widget labelSpacing = SizedBox(height: material3 ? lerpDouble(0, _verticalIconLabelSpacingM3, appearingAnimationValue)! : 0);
         final Widget bottomSpacing = SizedBox(height: material3 ? _verticalDestinationSpacingM3 : verticalPadding);
+<<<<<<< HEAD
         final double indicatorHorizontalPadding = (destinationPadding.left / 2) - (destinationPadding.right / 2);
         final double indicatorVerticalPadding = destinationPadding.top;
         indicatorOffset = Offset(
@@ -702,6 +714,13 @@ class _RailDestination extends StatelessWidget {
             minWidth / 2 + _horizontalDestinationSpacingM3,
             indicatorVerticalPadding + indicatorVerticalOffset,
           );
+=======
+        final double indicatorHorizontalPadding = (destionationPadding.left / 2) - (destionationPadding.right / 2);
+        final double indicatorVerticalPadding = destionationPadding.top;
+        indicatorOffset = Offset(minWidth / 2 + indicatorHorizontalPadding, indicatorVerticalPadding);
+        if (minWidth < _NavigationRailDefaultsM2(context).minWidth!) {
+          indicatorOffset = Offset(minWidth / 2 + _horizontalDestinationSpacingM3, indicatorVerticalPadding);
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
         }
         content = Container(
           constraints: BoxConstraints(
@@ -744,6 +763,7 @@ class _RailDestination extends StatelessWidget {
         final Widget topSpacing = SizedBox(height: material3 ? 0 : _verticalDestinationPaddingWithLabel);
         final Widget labelSpacing = SizedBox(height: material3 ? _verticalIconLabelSpacingM3 : 0);
         final Widget bottomSpacing = SizedBox(height: material3 ? _verticalDestinationSpacingM3 : _verticalDestinationPaddingWithLabel);
+<<<<<<< HEAD
         final double indicatorHorizontalPadding = (destinationPadding.left / 2) - (destinationPadding.right / 2);
         final double indicatorVerticalPadding = destinationPadding.top;
         indicatorOffset = Offset(
@@ -755,6 +775,13 @@ class _RailDestination extends StatelessWidget {
             minWidth / 2 + _horizontalDestinationSpacingM3,
             indicatorVerticalPadding + indicatorVerticalOffset,
           );
+=======
+        final double indicatorHorizontalPadding = (destionationPadding.left / 2) - (destionationPadding.right / 2);
+        final double indicatorVerticalPadding = destionationPadding.top;
+        indicatorOffset = Offset(minWidth / 2 + indicatorHorizontalPadding, indicatorVerticalPadding);
+        if (minWidth < _NavigationRailDefaultsM2(context).minWidth!) {
+          indicatorOffset = Offset(minWidth / 2 + _horizontalDestinationSpacingM3, indicatorVerticalPadding);
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
         }
         content = Container(
           constraints: BoxConstraints(
@@ -804,8 +831,11 @@ class _RailDestination extends StatelessWidget {
               hoverColor: effectiveHoverColor,
               useMaterial3: material3,
               indicatorOffset: indicatorOffset,
+<<<<<<< HEAD
               applyXOffset: applyXOffset,
               textDirection: textDirection,
+=======
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
               child: content,
             ),
           ),
@@ -828,8 +858,11 @@ class _IndicatorInkWell extends InkResponse {
     super.hoverColor,
     required this.useMaterial3,
     required this.indicatorOffset,
+<<<<<<< HEAD
     required this.applyXOffset,
     required this.textDirection,
+=======
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
   }) : super(
     containedInkWell: true,
     highlightShape: BoxShape.rectangle,
@@ -838,6 +871,7 @@ class _IndicatorInkWell extends InkResponse {
   );
 
   final bool useMaterial3;
+<<<<<<< HEAD
 
   // The offset used to position Ink highlight.
   final Offset indicatorOffset;
@@ -848,6 +882,9 @@ class _IndicatorInkWell extends InkResponse {
 
   // The text direction used to adjust the indicator horizontal offset.
   final TextDirection textDirection;
+=======
+  final Offset indicatorOffset;
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
 
   @override
   RectCallback? getRectCallback(RenderBox referenceBox) {
@@ -859,7 +896,11 @@ class _IndicatorInkWell extends InkResponse {
       }
       return () {
         return Rect.fromLTWH(
+<<<<<<< HEAD
           indicatorHorizontalCenter - (_kCircularIndicatorDiameter / 2),
+=======
+          indicatorOffset.dx - (_kCircularIndicatorDiameter / 2),
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
           indicatorOffset.dy,
           _kCircularIndicatorDiameter,
           _kIndicatorHeight,

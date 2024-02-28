@@ -228,7 +228,11 @@ class InkRipple extends InteractiveInkFeature {
     final Paint paint = Paint()..color = color.withAlpha(alpha);
     Rect? rect;
     if (_clipCallback != null) {
+<<<<<<< HEAD
        rect = _clipCallback();
+=======
+       rect = _clipCallback!();
+>>>>>>> b06b8b2710955028a6b562f5aa6fe62941d6febf
     }
     // Splash moves to the center of the reference box.
     final Offset center = Offset.lerp(
